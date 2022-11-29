@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'partials/_navbar.html' %}
+<div class="container mx-auto">
+    <ul>
+        {% for cliente in clientes %}
+        <li>Nome: {{ cliente.nome }}</li>
+        <li>CPF/CNPJ: {{ cliente.cpf_cnpj }}</li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Enviar</button>
+    </form>
+
+
+</div>
+{% endblock %}

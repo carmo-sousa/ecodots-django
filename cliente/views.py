@@ -1,11 +1,45 @@
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.views import View
+from django.shortcuts import render, get_object_or_404, redirect
 
+from .forms import ClienteForm
 from cliente.models import Cliente
+
+
+class Index(View):
+    def get(self, request):
+        form = ClienteForm()
+        clientes = Cliente.objects.all()
+        return render(
+            request, "index.html", context={"clientes": clientes, "form": form}
+        )
+
+    def post(self, request):
+        form = ClienteForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+        return redirect(
+            to="index",
+        )
+
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hello, world!")
+    form = ClienteForm()
+    clientes = Cliente.objects.all()
+
+    if request.method == "POST":
+        form = ClienteForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+        return redirect(
+            to="index",
+        )
+
+    return render(request, "index.html", context={"clientes": clientes, "form": form})
 
 
 def lista(request):
