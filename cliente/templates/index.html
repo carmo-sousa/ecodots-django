@@ -7,14 +7,21 @@
         {% for cliente in clientes %}
         <li>Nome: {{ cliente.nome }}</li>
         <li>CPF/CNPJ: {{ cliente.cpf_cnpj }}</li>
+        <li><a href="{% url 'deletar' cliente.id %}">Deletar</a></li>
         {% endfor %}
     </ul>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
     <form action="{% url 'index' %}" method="post">
         {% csrf_token %}
         {{ form }}
         <button type="submit">Enviar</button>
     </form>
-
 
 </div>
 {% endblock %}
