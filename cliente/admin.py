@@ -3,7 +3,7 @@ from cliente.models import Cliente, Contato
 
 
 class ClienteAdmin(admin.ModelAdmin):
-    list_display = ["id", "nome", "cpf_cnpj", "tipo"]
+    list_display = ["id", "nome", "cpf_cnpj", "tipo", "dt_criacao"]
     list_display_links = ["id", "nome"]
     search_fields = ["cpf_cnpj"]
     list_per_page = 20
