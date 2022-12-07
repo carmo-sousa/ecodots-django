@@ -1,0 +1,12 @@
+[
+  {
+    "model": "pessoa.pessoa",
+    "pk": 1,
+    "fields": {
+      "nome": "Romulo do Carmo Sousa",
+      "cpf_cnpj": "03256491200",
+      "dt_criacao": "2022-12-04 14:00:00T-04:00:00",
+      "dt_alteracao": "2022-12-04 14:00:00T-04:00:00"
+    }
+  }
+]
